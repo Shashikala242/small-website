@@ -1,0 +1,579 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexora Technologies | Innovate Beyond</title>
+
+<style>
+:root {
+  --bg: #080d1b;
+  --card: #111a2d;
+  --text: #f4f7ff;
+  --muted: #a5b0c7;
+  --purple: #9b7bff;
+  --cyan: #42e8df;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+.container { width: min(1120px, 90%); margin: auto; }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,13,27,.92);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #ffffff12;
+}
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.logo { font-size: 25px; font-weight: 800; letter-spacing: -1px; }
+.logo span { color: var(--cyan); }
+nav { display: flex; align-items: center; gap: 28px; }
+nav a { color: var(--muted); font-size: 14px; transition: .2s; }
+nav a:hover { color: var(--cyan); }
+.menu-btn {
+  display: none; background: transparent; color: white;
+  border: 0; font-size: 27px; cursor: pointer;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 23px;
+  border: 0;
+  border-radius: 9px;
+  background: linear-gradient(110deg, var(--purple), #6755f5);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px #9b7bff45; }
+.btn-outline { background: transparent; border: 1px solid #ffffff35; }
+.btn-small { padding: 9px 17px; font-size: 13px; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 590px;
+  display: flex;
+  align-items: center;
+  padding: 85px 0;
+  background:
+    radial-gradient(ellipse at 85% 45%, #603dca32, transparent 42%),
+    radial-gradient(ellipse at 10% 80%, #1b9eac19, transparent 35%);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 45px;
+}
+.tag {
+  display: inline-block;
+  padding: 7px 13px;
+  border-radius: 30px;
+  color: var(--cyan);
+  background: #42e8df12;
+  border: 1px solid #42e8df35;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+h1 { font-size: clamp(40px, 5.5vw, 67px); line-height: 1.12; letter-spacing: -2px; }
+.gradient {
+  background: linear-gradient(100deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero p { color: var(--muted); max-width: 520px; margin: 23px 0 28px; }
+.actions { display: flex; gap: 13px; flex-wrap: wrap; }
+.visual {
+  position: relative;
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+}
+.orb {
+  width: 245px; height: 245px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #b6a1ff, #6543ce 40%, #161d4a 72%);
+  box-shadow: 0 0 90px #8b65ff45, inset -15px -20px 50px #070c20;
+  animation: float 5s ease-in-out infinite;
+}
+.orbit {
+  position: absolute; width: 330px; height: 125px;
+  border: 1px solid #42e8df80; border-radius: 50%;
+  transform: rotate(-32deg);
+}
+.orbit.two { transform: rotate(55deg); border-color: #a78bfa80; }
+.spark {
+  position: absolute; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--cyan);
+  box-shadow: 0 0 24px var(--cyan);
+}
+.spark.one { top: 45px; right: 60px; }
+.spark.two { bottom: 55px; left: 45px; background: var(--purple); }
+.floating-card {
+  position: absolute;
+  padding: 13px 17px;
+  background: #121d32eF;
+  border: 1px solid #ffffff20;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px #0005;
+  font-size: 13px;
+}
+.floating-card b { display: block; font-size: 19px; }
+.fc-one { top: 35px; left: 0; }
+.fc-two { bottom: 30px; right: 0; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+section { padding: 85px 0; }
+.section-heading { text-align: center; margin-bottom: 45px; }
+.section-heading h2 { font-size: clamp(29px, 4vw, 42px); margin-bottom: 10px; }
+.section-heading p { color: var(--muted); }
+.stats {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 20px; padding: 28px 0;
+  border-top: 1px solid #ffffff12;
+  border-bottom: 1px solid #ffffff12;
+}
+.stat { text-align: center; }
+.stat strong { display: block; font-size: 30px; color: var(--cyan); }
+.stat span { color: var(--muted); font-size: 13px; }
+
+.services-grid, .projects-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;
+}
+.service-card, .project-card, .about-panel, .contact-panel {
+  background: linear-gradient(145deg, #141f35, #0e1526);
+  border: 1px solid #ffffff12;
+  border-radius: 17px;
+  transition: .3s;
+}
+.service-card { padding: 28px; }
+.service-card:hover, .project-card:hover {
+  transform: translateY(-7px); border-color: #9b7bff75;
+}
+.service-icon { font-size: 32px; margin-bottom: 17px; }
+.service-card h3, .project-card h3 { margin-bottom: 10px; }
+.service-card p, .project-card p { color: var(--muted); font-size: 14px; }
+.learn { display: inline-block; color: var(--cyan); margin-top: 18px; font-size: 14px; }
+
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 45px; align-items: center;
+}
+.about-panel { padding: 32px; }
+.about-panel h3 { font-size: 25px; margin-bottom: 12px; }
+.about-panel p, .about-copy p { color: var(--muted); }
+.check { margin-top: 18px; }
+.check li { list-style: none; margin: 11px 0; }
+.check li::before { content: "✓"; color: var(--cyan); margin-right: 10px; }
+.about-copy h2 { font-size: 37px; line-height: 1.2; margin: 15px 0; }
+.about-copy p { margin-bottom: 20px; }
+
+.project-card { overflow: hidden; }
+.project-art {
+  min-height: 175px;
+  display: grid; place-items: center;
+  font-size: 65px;
+}
+.art-one { background: linear-gradient(135deg,#202e5a,#694bc0); }
+.art-two { background: linear-gradient(135deg,#125b66,#24345e); }
+.art-three { background: linear-gradient(135deg,#54344e,#c26b8a); }
+.project-content { padding: 22px; }
+.project-content .tag { margin: 0 0 13px; }
+
+.cta {
+  text-align: center;
+  border: 1px solid #9b7bff35;
+  border-radius: 23px;
+  padding: 55px 25px;
+  background: radial-gradient(ellipse at top, #7654c52c, #111a2d 72%);
+}
+.cta h2 { font-size: clamp(28px,4vw,42px); margin-bottom: 12px; }
+.cta p { color: var(--muted); margin-bottom: 25px; }
+
+.contact-grid {
+  display: grid; grid-template-columns: .8fr 1.2fr;
+  gap: 28px; align-items: start;
+}
+.contact-panel { padding: 28px; }
+.contact-panel p { color: var(--muted); margin: 10px 0 18px; }
+.contact-detail { margin: 22px 0; }
+.contact-detail strong { display: block; margin-bottom: 4px; }
+form { display: grid; gap: 15px; }
+label { display: block; font-size: 13px; margin-bottom: 6px; }
+input, textarea, select {
+  width: 100%; padding: 13px 14px;
+  border-radius: 8px; border: 1px solid #ffffff20;
+  background: #080f20; color: white; outline: none;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--purple); }
+textarea { min-height: 120px; resize: vertical; }
+#formMessage { color: var(--cyan); font-size: 14px; }
+
+footer { border-top: 1px solid #ffffff12; padding: 27px 0; }
+.footer-inner {
+  display: flex; justify-content: space-between;
+  gap: 15px; flex-wrap: wrap;
+}
+footer p, footer a { color: var(--muted); font-size: 13px; }
+footer a:hover { color: var(--cyan); }
+
+.reveal { opacity: 0; transform: translateY(22px); transition: .65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media(max-width:800px) {
+  .menu-btn { display: block; }
+  nav {
+    display: none; position: absolute; top: 76px; left: 0; right: 0;
+    padding: 22px 5%; background: #0b1222;
+    border-bottom: 1px solid #ffffff20;
+    flex-direction: column; align-items: stretch; gap: 18px;
+  }
+  nav.open { display: flex; }
+  .nav-cta { display: none; }
+  .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero { padding: 65px 0; }
+  .visual { min-height: 320px; }
+  .services-grid, .projects-grid { grid-template-columns: repeat(2,1fr); }
+  .stats { grid-template-columns: repeat(2,1fr); gap: 25px; }
+}
+@media(max-width:520px) {
+  .services-grid, .projects-grid { grid-template-columns: 1fr; }
+  .orb { width: 190px; height: 190px; }
+  .orbit { width: 260px; }
+  .fc-one { left: 0; }
+  .fc-two { right: 0; }
+  h1 { letter-spacing: -1px; }
+  section { padding: 65px 0; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">NEXORA<span>.</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation"
+      aria-expanded="false">☰</button>
+    <nav id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-small nav-cta">Let's Talk ↗</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag">✦ THE FUTURE STARTS HERE</span>
+      <h1>We Build<br>Digital <span class="gradient">Experiences.</span></h1>
+      <p>
+        We transform bold ideas into powerful digital solutions.
+        From intelligent software to stunning websites, we help businesses
+        innovate, grow, and stand out.
+      </p>
+      <div class="actions">
+        <a href="#projects" class="btn">Explore Our Work ↗</a>
+        <a href="#services" class="btn btn-outline">Discover Services</a>
+      </div>
+    </div>
+    <div class="visual" aria-label="Abstract digital technology illustration">
+      <div class="orbit"></div>
+      <div class="orbit two"></div>
+      <div class="orb"></div>
+      <div class="spark one"></div>
+      <div class="spark two"></div>
+      <div class="floating-card fc-one">⚡ Innovation<b>Unlimited</b></div>
+      <div class="floating-card fc-two">✦ Digital Growth<b>Next Level</b></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="stats reveal">
+    <div class="stat"><strong>25+</strong><span>Projects Delivered</span></div>
+    <div class="stat"><strong>15+</strong><span>Happy Clients</span></div>
+    <div class="stat"><strong>5+</strong><span>Technology Areas</span></div>
+    <div class="stat"><strong>24/7</strong><span>Ideas in Motion</span></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="tag">WHAT WE DO</span>
+      <h2>Solutions for a <span class="gradient">Digital World</span></h2>
+      <p>Technology, creativity, and strategy working together.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="service-icon">💻</div>
+        <h3>Web Development</h3>
+        <p>Responsive, modern websites designed to deliver excellent user experiences on every device.</p>
+        <a class="learn" href="#contact">Build your website ↗</a>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon">🤖</div>
+        <h3>AI & Machine Learning</h3>
+        <p>Smart applications that analyze data, automate tasks, and help make better decisions.</p>
+        <a class="learn" href="#contact">Explore AI solutions ↗</a>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon">🛡️</div>
+        <h3>Cybersecurity</h3>
+        <p>Security-focused solutions to identify digital threats and protect valuable information.</p>
+        <a class="learn" href="#contact">Secure your systems ↗</a>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon">📱</div>
+        <h3>App Development</h3>
+        <p>Practical application concepts that connect people, services, and businesses.</p>
+        <a class="learn" href="#contact">Discuss an app ↗</a>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon">📊</div>
+        <h3>Data Analytics</h3>
+        <p>Turn complex datasets into meaningful insights, reports, and interactive dashboards.</p>
+        <a class="learn" href="#contact">Discover insights ↗</a>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon">🎨</div>
+        <h3>UI/UX Design</h3>
+        <p>Beautiful and intuitive digital interfaces focused on usability and customer satisfaction.</p>
+        <a class="learn" href="#contact">Design with us ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-panel reveal">
+      <span class="tag">OUR APPROACH</span>
+      <h3>Ideas into Impact.</h3>
+      <p>We believe technology should solve real problems, simplify work, and create meaningful opportunities.</p>
+      <ul class="check">
+        <li>Innovation-driven thinking</li>
+        <li>People-first design</li>
+        <li>Scalable digital solutions</li>
+        <li>Continuous improvement</li>
+      </ul>
+    </div>
+    <div class="about-copy reveal">
+      <span class="tag">WHO WE ARE</span>
+      <h2>We create technology that <span class="gradient">moves you forward.</span></h2>
+      <p>Nexora Technologies is a sample technology company brand focused on creating digital products that combine creativity, usability, and modern technology.</p>
+      <p>Our goal is to turn challenges into opportunities through thoughtful design, reliable development, and a passion for innovation.</p>
+      <a href="#contact" class="btn">Know More About Us ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="tag">OUR PORTFOLIO</span>
+      <h2>Ideas Made <span class="gradient">Real.</span></h2>
+      <p>Explore a few example projects from our digital universe.</p>
+    </div>
+    <div class="projects-grid">
+      <article class="project-card reveal">
+        <div class="project-art art-one">🧠</div>
+        <div class="project-content">
+          <span class="tag">ARTIFICIAL INTELLIGENCE</span>
+          <h3>Smart Insights</h3>
+          <p>An example analytics platform concept for turning data into actionable insights.</p>
+        </div>
+      </article>
+      <article class="project-card reveal">
+        <div class="project-art art-two">🌐</div>
+        <div class="project-content">
+          <span class="tag">WEB TECHNOLOGY</span>
+          <h3>Digital Connect</h3>
+          <p>A modern web experience concept that helps businesses connect with their audiences.</p>
+        </div>
+      </article>
+      <article class="project-card reveal">
+        <div class="project-art art-three">🔐</div>
+        <div class="project-content">
+          <span class="tag">CYBERSECURITY</span>
+          <h3>SecureSphere</h3>
+          <p>A security dashboard concept for monitoring digital risks and presenting alerts.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta reveal">
+      <span class="tag">HAVE A PROJECT IN MIND?</span>
+      <h2>Let's Create Something <span class="gradient">Amazing.</span></h2>
+      <p>Your next big idea deserves a great digital experience.</p>
+      <a href="#contact" class="btn">Start a Conversation ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="tag">GET IN TOUCH</span>
+      <h2>Let's Talk <span class="gradient">Ideas.</span></h2>
+      <p>Have a question or project? We'd love to hear from you.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-panel reveal">
+        <h3>Contact Information</h3>
+        <p>Tell us what you're planning. Let's explore how technology can help.</p>
+        <div class="contact-detail">
+          <strong>✉ Email</strong>
+          <span>hello@nexora.example</span>
+        </div>
+        <div class="contact-detail">
+          <strong>📍 Location</strong>
+          <span>Bengaluru, Karnataka, India</span>
+        </div>
+        <div class="contact-detail">
+          <strong>🕒 Working Hours</strong>
+          <span>Monday – Friday</span>
+        </div>
+      </div>
+      <div class="contact-panel reveal">
+        <form id="contactForm">
+          <div>
+            <label for="name">Your Name</label>
+            <input id="name" name="name" placeholder="Enter your name" required>
+          </div>
+          <div>
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div>
+            <label for="service">Service Interested In</label>
+            <select id="service" name="service" required>
+              <option value="">Choose a service</option>
+              <option>Web Development</option>
+              <option>AI & Machine Learning</option>
+              <option>Cybersecurity</option>
+              <option>App Development</option>
+              <option>Data Analytics</option>
+              <option>UI/UX Design</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your idea..." required></textarea>
+          </div>
+          <button type="submit" class="btn">Prepare Message ↗</button>
+          <p id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a class="logo" href="#home">NEXORA<span>.</span></a>
+    <p>© <span id="year"></span> Nexora Technologies. Demo website.</p>
+    <p><a href="#home">Back to top ↑</a></p>
+  </div>
+</footer>
+
+<script>
+// Mobile navigation
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
+
+menuBtn.addEventListener("click", () => {
+  const isOpen = navMenu.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", isOpen);
+  menuBtn.textContent = isOpen ? "✕" : "☰";
+});
+
+navMenu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.textContent = "☰";
+  });
+});
+
+// Reveal animations while scrolling
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+
+// Automatically update the copyright year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Contact form demonstration
+// This prepares an email draft; it does not send or store form data.
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const service = document.getElementById("service").value;
+  const message = document.getElementById("message").value.trim();
+  const status = document.getElementById("formMessage");
+
+  if (!name || !email || !service || !message) {
+    status.textContent = "Please fill in all the fields.";
+    return;
+  }
+
+  const subject = encodeURIComponent("Website enquiry: " + service);
+  const body = encodeURIComponent(
+    "Name: " + name +
+    "\nEmail: " + email +
+    "\nService: " + service +
+    "\n\nMessage:\n" + message
+  );
+
+  status.textContent = "Opening your email application...";
+  window.location.href =
+    "mailto:hello@nexora.example?subject=" + subject + "&body=" + body;
+});
+</script>
+</body>
+</html>
